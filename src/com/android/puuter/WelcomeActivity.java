@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 import android.view.Menu;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -38,6 +39,21 @@ public class WelcomeActivity extends Activity {
         mControllerCallback = new ControllerResults();
         mHandler = new LoginHandler();
         mController = Controller.getInstance(getApplication());
+        
+        mLoginProgressBar.setVisibility(View.GONE);
+        
+        mOkButton.setOnClickListener(new Button.OnClickListener(){
+			@Override
+			public void onClick(View v) {
+				new Thread(){
+					public void run(){
+						String username = mUsername.getText().toString();
+						String password = mPassword.getText().toString();
+						mController.loginServer(getApplication(), username, password, mControllerCallback);
+					}
+				}.start();
+			}
+        });
     }
 
     private EditText mUsername;
@@ -75,7 +91,11 @@ public class WelcomeActivity extends Activity {
     	public void handleMessage(android.os.Message msg){
     		switch(msg.what){
     		case MSG_PROGRESS:
-    			mLoginProgressBar.setVisibility(msg.arg1);
+    			if(msg.arg1 == 0){	
+    			mLoginProgressBar.setVisibility(View.GONE);
+    			}else{
+    				mLoginProgressBar.setVisibility(View.VISIBLE);
+    			}
     			break;
     		default:
     			super.handleMessage(msg);
