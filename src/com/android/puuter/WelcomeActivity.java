@@ -38,7 +38,7 @@ public class WelcomeActivity extends Activity {
         
         mControllerCallback = new ControllerResults();
         mHandler = new LoginHandler();
-        mController = Controller.getInstance(getApplication());
+        mController = Controller.getInstance(mContext);
         
         mLoginProgressBar.setVisibility(View.GONE);
         
@@ -49,7 +49,7 @@ public class WelcomeActivity extends Activity {
 					public void run(){
 						String username = mUsername.getText().toString();
 						String password = mPassword.getText().toString();
-						mController.loginServer(getApplication(), username, password, mControllerCallback);
+						mController.loginServer(mContext, username, password, mControllerCallback);
 					}
 				}.start();
 			}
@@ -65,6 +65,7 @@ public class WelcomeActivity extends Activity {
     private ControllerResults mControllerCallback;
     private LoginHandler mHandler;
     private Controller mController;
+    private Context mContext = this;
     
     private String TAG = "login";
     
@@ -95,6 +96,7 @@ public class WelcomeActivity extends Activity {
     			mLoginProgressBar.setVisibility(View.GONE);
     			}else{
     				mLoginProgressBar.setVisibility(View.VISIBLE);
+    				TabActivity.actionView(mContext, 0);
     			}
     			break;
     		default:
