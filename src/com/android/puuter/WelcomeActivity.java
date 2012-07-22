@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.android.puuter.Controller;
 
@@ -59,6 +60,7 @@ public class WelcomeActivity extends Activity {
     private EditText mUsername;
     private EditText mPassword;
     private Button mOkButton;
+    //not used
     private Button mCancelButton;
     private ProgressBar mLoginProgressBar;
     
@@ -73,14 +75,15 @@ public class WelcomeActivity extends Activity {
     	public void loginServerCallBack(Context context, int progress){
     		switch(progress){
     		case 0:
-    			mHandler.progress(true);
+    			mHandler.progress(0);
     			Log.d(TAG, "login begin");
     			break;
     		case 100:
-    			mHandler.progress(false);
+    			mHandler.progress(100);
     			Log.d(TAG, "login success");
+    			break;
     		case -1:
-    			mHandler.progress(false);
+    			mHandler.progress(-1);
     			Log.d(TAG, "login canceled or exception occured");
     		}
     	}
@@ -93,10 +96,13 @@ public class WelcomeActivity extends Activity {
     		switch(msg.what){
     		case MSG_PROGRESS:
     			if(msg.arg1 == 0){	
-    			mLoginProgressBar.setVisibility(View.GONE);
-    			}else{
+    				mLoginProgressBar.setVisibility(View.GONE);
+    			}else if(msg.arg1 == 100){
     				mLoginProgressBar.setVisibility(View.VISIBLE);
     				TabActivity.actionView(mContext, 0);
+    			}else if(msg.arg1 < 0){
+    				mLoginProgressBar.setVisibility(View.GONE);
+        			Toast.makeText(mContext, "login canceled or exception occured", Toast.LENGTH_LONG).show();
     			}
     			break;
     		default:
@@ -104,9 +110,9 @@ public class WelcomeActivity extends Activity {
     		}
     	}
     	
-    	public void progress(boolean progress){
+    	public void progress(int progress){
     		android.os.Message msg = android.os.Message.obtain(this, MSG_PROGRESS);
-    		msg.arg1 = progress ? 1 : 0;
+    		msg.arg1 = progress;
     		sendMessage(msg);
     	}
     }
