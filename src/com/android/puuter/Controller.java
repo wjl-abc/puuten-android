@@ -24,7 +24,6 @@ public class Controller {
 		resultCallback.loginServerCallBack(context, 0);
 		int id = mHttpController.loginRemote(username, password);
 		Log.d(TAG, "id:"+id);
-//		SystemClock.sleep(2000);
 		if(id > 0){
 			resultCallback.loginServerCallBack(context, 100);
 		}else{

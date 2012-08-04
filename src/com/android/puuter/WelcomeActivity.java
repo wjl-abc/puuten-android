@@ -102,9 +102,9 @@ public class WelcomeActivity extends Activity {
     		switch(msg.what){
     		case MSG_PROGRESS:
     			if(msg.arg1 == 0){	
-    				mLoginProgressBar.setVisibility(View.GONE);
-    			}else if(msg.arg1 == 100){
     				mLoginProgressBar.setVisibility(View.VISIBLE);
+    			}else if(msg.arg1 == 100){
+    				mLoginProgressBar.setVisibility(View.GONE);
     				TabActivity.actionView(mContext, 0);
     			}else if(msg.arg1 < 0){
     				mLoginProgressBar.setVisibility(View.GONE);
