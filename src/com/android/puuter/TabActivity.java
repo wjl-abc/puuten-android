@@ -13,6 +13,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.view.ViewGroup.LayoutParams;
@@ -94,7 +95,11 @@ public class TabActivity extends Activity {
     			int colId = msg.arg2;
     			FlowViewElement fvw = (FlowViewElement) msg.obj;
     			Drawable drawable = fvw.getDrawableImage();
-    			Bitmap bitmap = ((BitmapDrawable)drawable).getBitmap();
+    			Bitmap bitmapTmp = ((BitmapDrawable)drawable).getBitmap();
+    			float scale = mImageViewWidth/((float)bitmapTmp.getWidth());
+    			Matrix matrix = new Matrix();
+    			matrix.postScale(scale, scale);
+    			Bitmap bitmap = Bitmap.createBitmap(bitmapTmp, 0, 0, bitmapTmp.getWidth(), bitmapTmp.getHeight(), matrix, true);
     			fvw.setImageBitmap(bitmap);
     			break;
     		case IMAGE_DOWNLOAD_FAIL:
