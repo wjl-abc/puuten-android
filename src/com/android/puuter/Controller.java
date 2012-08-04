@@ -40,7 +40,7 @@ public class Controller {
 		WaterFlowElement []waterFlowData = new WaterFlowElement[30];
 		for(int i=0; i<30; i++){
 			Log.v(TAG, i+"");
-			waterFlowData[i] = new WaterFlowElement("http://tp3.sinaimg.cn/2453855430/180/5613113094/1", 1.0f, 100);
+			waterFlowData[i] = new WaterFlowElement("http://upload.northnews.cn/2011/0805/1312509857406.jpg", 1.0f, 100);
 		}
 		resultCallback.downloadResource(true, waterFlowData);
 	}
