@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -13,6 +15,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.puuter.Controller;
+import com.android.puuter.model.WaterFlowElement;
 
 public class WelcomeActivity extends Activity {
 
@@ -24,11 +27,11 @@ public class WelcomeActivity extends Activity {
         initView();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_welcome, menu);
-        return true;
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.activity_welcome, menu);
+//        return true;
+//    }
     
     private void initView(){
         mUsername = (EditText) findViewById(R.id.username);
@@ -86,6 +89,9 @@ public class WelcomeActivity extends Activity {
     			mHandler.progress(-1);
     			Log.d(TAG, "login canceled or exception occured");
     		}
+    	}
+    	
+    	public void downloadResource(boolean status, WaterFlowElement []waterFlowData){
     	}
     }
     

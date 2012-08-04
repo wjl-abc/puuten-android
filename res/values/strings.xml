@@ -8,5 +8,6 @@
     <string name="puuterwelcome">Welcome to Puuter\'s World</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_tab">TabActivity</string>
+    <string name="title_activity_com.android.puuter.flowviewelement">flowviewelement</string>
 
 </resources>
