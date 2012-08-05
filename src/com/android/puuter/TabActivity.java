@@ -2,7 +2,8 @@ package com.android.puuter;
 
 import java.util.ArrayList;
 
-import com.android.puuter.Controller.Result;
+import com.android.puuter.controller.Controller;
+import com.android.puuter.controller.Controller.Result;
 import com.android.puuter.custom.FlowViewElement;
 import com.android.puuter.model.WaterFlow;
 import com.android.puuter.setting.Setting;

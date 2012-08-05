@@ -14,7 +14,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.android.puuter.Controller;
+import com.android.puuter.controller.Controller;
 import com.android.puuter.model.WaterFlow;
 
 public class WelcomeActivity extends Activity {

@@ -1,4 +1,4 @@
-package com.android.puuter;
+package com.android.puuter.controller;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -37,13 +37,13 @@ public final class HttpController{
 	
 	public int loginRemote(String username, String password){
 		String url = Setting.rootUrl + "/" + Setting.loginPath;
-		Log.v(TAG, url);
+		Log.d(TAG, url);
 		HttpPost httpPost = new HttpPost(url);
 		ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
 		params.add(new BasicNameValuePair("username", username));
 		params.add(new BasicNameValuePair("password", password));
-		Log.v(TAG, "username:"+username);
-		Log.v(TAG, "passwd:"+password);
+		Log.d(TAG, "username:"+username);
+		Log.d(TAG, "passwd:"+password);
 		params.add(new BasicNameValuePair("mobile", "android"));
 		try {
 			HttpEntity httpEntity = new UrlEncodedFormEntity(params, "gb2312");
@@ -55,11 +55,11 @@ public final class HttpController{
 			strResult.replaceAll("\r", "");
 			return Integer.parseInt(strResult);
 		} catch (ClientProtocolException e) {
-			Log.v("reponse", "ClientProtocolException: " + e.getMessage().toString());
+			Log.e("reponse", "ClientProtocolException: " + e.getMessage().toString());
 		} catch (IOException e) {
-			Log.v("reponse", "IOException: " + e.getMessage().toString());
+			Log.e("reponse", "IOException: " + e.getMessage().toString());
 		} catch (Exception e) {
-			Log.v("reponse", "Exception: " + e.getMessage().toString());
+			Log.e("reponse", "Exception: " + e.getMessage().toString());
 		}
 		return -1;
 	}
@@ -82,16 +82,15 @@ public final class HttpController{
 			HttpResponse httpResponse = httpClient.execute(httpPost);
 			if(httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK){
 				strResult = EntityUtils.toString(httpResponse.getEntity()).replaceAll("\r", "");
-				Log.v(TAG, strResult);
 			}else{
-				Log.v(TAG, "connect fail");
+				Log.e(TAG, "connect fail");
 			}
 		}catch(ClientProtocolException e){
-			Log.v(TAG, "ClientProtocolException"+e.getMessage().toString());
+			Log.e(TAG, "ClientProtocolException"+e.getMessage().toString());
 		}catch(IOException e){
-			Log.v(TAG, "IOException"+e.getMessage().toString());
+			Log.e(TAG, "IOException"+e.getMessage().toString());
 		}catch(Exception e){
-			Log.v(TAG, "Exception"+e.getMessage().toString());
+			Log.e(TAG, "Exception"+e.getMessage().toString());
 		}
 		
 		return strResult;
@@ -121,3 +120,4 @@ public final class HttpController{
 	private static CookieStore mCookiestore;
 	private final String TAG = "HttpController";
 }
+

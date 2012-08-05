@@ -1,6 +1,6 @@
 package com.android.puuter.custom;
 
-import com.android.puuter.Controller;
+import com.android.puuter.controller.Controller;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -119,9 +119,9 @@ public class FlowViewElement extends ImageView implements View.OnClickListener{
 	private void downloadImage(){
 		new Thread(){
 			public void run(){
-				Log.v(TAG, "begin "+mRowId+" "+mColId+" "+mUrl);
+//				Log.d(TAG, "begin "+mRowId+" "+mColId+" "+mUrl);
 				mDrawable = mController.loadImage(mUrl);
-				Log.v(TAG, "end "+mRowId+" "+mColId+" "+mUrl);
+//				Log.d(TAG, "end "+mRowId+" "+mColId+" "+mUrl);
 				int what = mDrawable==null ? IMAGE_DOWNLOAD_FAIL : IMAGE_DOWNLOAD_SUCCESS;
 				Handler h = getViewHandler();
 				Message m = h.obtainMessage(what, mRowId, mColId, FlowViewElement.this);

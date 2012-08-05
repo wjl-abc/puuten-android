@@ -1,4 +1,4 @@
-package com.android.puuter;
+package com.android.puuter.controller;
 
 import com.android.puuter.model.WaterFlow;
 import com.android.puuter.setting.Setting;
