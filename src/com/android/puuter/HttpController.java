@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.CookieStore;
@@ -61,6 +62,39 @@ public final class HttpController{
 			Log.v("reponse", "Exception: " + e.getMessage().toString());
 		}
 		return -1;
+	}
+	
+	public String retrieveRemoteData(String url){
+		String strResult = null;
+		if(mCookiestore == null){
+			Log.v(TAG, "You have not login");
+			return strResult;
+		}
+		
+		try{
+			HttpPost httpPost = new HttpPost(url);
+			ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
+			params.add(new BasicNameValuePair("mobile", "android"));
+			HttpEntity httpEntity = new UrlEncodedFormEntity(params, "gb2312");
+			httpPost.setEntity(httpEntity);
+			DefaultHttpClient httpClient = new DefaultHttpClient();
+			httpClient.setCookieStore(mCookiestore);
+			HttpResponse httpResponse = httpClient.execute(httpPost);
+			if(httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK){
+				strResult = EntityUtils.toString(httpResponse.getEntity()).replaceAll("\r", "");
+				Log.v(TAG, strResult);
+			}else{
+				Log.v(TAG, "connect fail");
+			}
+		}catch(ClientProtocolException e){
+			Log.v(TAG, "ClientProtocolException"+e.getMessage().toString());
+		}catch(IOException e){
+			Log.v(TAG, "IOException"+e.getMessage().toString());
+		}catch(Exception e){
+			Log.v(TAG, "Exception"+e.getMessage().toString());
+		}
+		
+		return strResult;
 	}
 	
 	public Drawable loadImage(String url){

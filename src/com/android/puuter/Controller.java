@@ -1,6 +1,7 @@
 package com.android.puuter;
 
 import com.android.puuter.model.WaterFlowElement;
+import com.android.puuter.setting.Setting;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -43,6 +44,9 @@ public class Controller {
 //			waterFlowData[i] = new WaterFlowElement("http://images.orzzso.com/img/photo/1/25440.jpg", 1.0f, 100);
 		}
 		resultCallback.downloadResource(true, waterFlowData);
+		
+		String url = Setting.rootUrl + "/" + Setting.eventPath;
+		String str = mHttpController.retrieveRemoteData(url);
 	}
 	
 	public interface Result{
