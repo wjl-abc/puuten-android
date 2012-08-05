@@ -9,5 +9,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_tab">TabActivity</string>
     <string name="title_activity_com.android.puuter.flowviewelement">flowviewelement</string>
+    <string name="title_activity_detail_info">DetailInfo</string>
 
 </resources>

@@ -29,7 +29,8 @@ public class WaterFlow {
 				mWaterFlowData[i] = new WaterFlowElement();
 				mWaterFlowData[i].mName = jsonArray.getJSONObject(i).getString("name");
 				mWaterFlowData[i].mBody = jsonArray.getJSONObject(i).getString("body");
-				mWaterFlowData[i].mPicUrl = jsonArray.getJSONObject(i).getString("thumbnail_pic");
+//				mWaterFlowData[i].mPicUrl = jsonArray.getJSONObject(i).getString("thumbnail_pic");
+				mWaterFlowData[i].mPicUrl = "http://www.huaxia.com/uniwaysimages/200510/zw201302271.jpg";
 				mWaterFlowData[i].mId = jsonArray.getJSONObject(i).getInt("wb_id");
 				mWaterFlowData[i].mRatio = jsonArray.getJSONObject(i).getInt("ratio");
 			}

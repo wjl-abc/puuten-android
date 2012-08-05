@@ -105,14 +105,13 @@ public final class HttpController{
 			Drawable drawable = Drawable.createFromStream(is, "image");
 			return drawable;
 		}catch (ClientProtocolException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            return null;
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            return null;
+            Log.w(TAG, "ClientProtocolException:" + e.toString());
+        }catch (IOException e) {
+            Log.w(TAG, "IOException:" + e.toString());
+        }catch(Exception e){
+            Log.w(TAG, "Exception:" + e.toString());
         }
+		return null;
 	}
 	
 	private static HttpController mHttpController;

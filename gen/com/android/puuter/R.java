@@ -33,14 +33,16 @@ public final class R {
         public static final int waterfall_image=0x7f080009;
     }
     public static final class layout {
-        public static final int activity_tab=0x7f030000;
-        public static final int activity_welcome=0x7f030001;
-        public static final int flowviewelement=0x7f030002;
+        public static final int activity_detail_info=0x7f030000;
+        public static final int activity_tab=0x7f030001;
+        public static final int activity_welcome=0x7f030002;
+        public static final int flowviewelement=0x7f030003;
     }
     public static final class menu {
-        public static final int activity_flowviewelement=0x7f070000;
-        public static final int activity_tab=0x7f070001;
-        public static final int activity_welcome=0x7f070002;
+        public static final int activity_detail_info=0x7f070000;
+        public static final int activity_flowviewelement=0x7f070001;
+        public static final int activity_tab=0x7f070002;
+        public static final int activity_welcome=0x7f070003;
     }
     public static final class string {
         public static final int app_name=0x7f050000;
@@ -49,6 +51,7 @@ public final class R {
         public static final int password=0x7f050002;
         public static final int puuterwelcome=0x7f050005;
         public static final int title_activity_com_android_puuter_flowviewelement=0x7f050008;
+        public static final int title_activity_detail_info=0x7f050009;
         public static final int title_activity_tab=0x7f050007;
         public static final int title_activity_welcome=0x7f050004;
         public static final int username=0x7f050001;

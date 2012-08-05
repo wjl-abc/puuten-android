@@ -37,14 +37,6 @@ public class Controller {
 	}
 	
 	public void loadResource(int id, final Result resultCallback){
-//		WaterFlowElement []waterFlowData = new WaterFlowElement[30];
-//		for(int i=0; i<30; i++){
-//			Log.v(TAG, i+"");
-//			waterFlowData[i] = new WaterFlowElement("http://upload.northnews.cn/2011/0805/1312509857406.jpg", 1.0f, 100);
-////			waterFlowData[i] = new WaterFlowElement("http://images.orzzso.com/img/photo/1/25440.jpg", 1.0f, 100);
-//		}
-//		resultCallback.downloadResource(true, waterFlowData);
-		
 		String url = Setting.rootUrl + "/" + Setting.eventPath;
 		String jsonStr = mHttpController.retrieveRemoteData(url);
 		WaterFlow waterFlow = new WaterFlow(jsonStr);

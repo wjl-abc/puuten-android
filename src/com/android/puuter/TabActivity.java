@@ -17,6 +17,7 @@ import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 
@@ -101,9 +102,11 @@ public class TabActivity extends Activity {
     			Matrix matrix = new Matrix();
     			matrix.postScale(scale, scale);
     			Bitmap bitmap = Bitmap.createBitmap(bitmapTmp, 0, 0, bitmapTmp.getWidth(), bitmapTmp.getHeight(), matrix, true);
+    			bitmapTmp.recycle();
     			fvw.setImageBitmap(bitmap);
     			break;
     		case IMAGE_DOWNLOAD_FAIL:
+    			Log.d(TAG, "download pic fail");
     			break;
     		case RESOURCE_DOWNLOAD_SUCCESS:
     			int len = mWaterFlow.getDataLen();
