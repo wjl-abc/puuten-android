@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import com.android.puuter.Controller.Result;
 import com.android.puuter.custom.FlowViewElement;
-import com.android.puuter.model.WaterFlowElement;
+import com.android.puuter.model.WaterFlow;
 import com.android.puuter.setting.Setting;
 
 import android.os.Bundle;
@@ -76,8 +76,8 @@ public class TabActivity extends Activity {
     	public void loginServerCallBack(Context context, int progress){
     	}
     	
-    	public void downloadResource(boolean status, WaterFlowElement []waterFlowData){
-    		mWaterFlowData = waterFlowData;
+    	public void downloadResource(boolean status, WaterFlow waterFlow){
+    		mWaterFlow = waterFlow;
     		mTabHandler.downloadResourceStatus(status);
     	}
     }
@@ -105,14 +105,15 @@ public class TabActivity extends Activity {
     		case IMAGE_DOWNLOAD_FAIL:
     			break;
     		case RESOURCE_DOWNLOAD_SUCCESS:
-    			for(WaterFlowElement wfe : mWaterFlowData){
+    			int len = mWaterFlow.getDataLen();
+    			for(int i=0; i<len; i++){
     				int columnIndex = GetMinValue(mColumnHeights);
     				FlowViewElement flowViewElement = new FlowViewElement(mContext, mTabHandler);
-    				flowViewElement.setUrl(wfe.getUrl());
-    				flowViewElement.setRatio(wfe.getRatio());
-    				flowViewElement.setId(wfe.getId());
+    				flowViewElement.setUrl(mWaterFlow.getPicUrl(i));
+    				flowViewElement.setRatio(mWaterFlow.getRatio(i));
+    				flowViewElement.setId(mWaterFlow.getId(i));
     				
-    				int height = (int)(wfe.getRatio()*mImageViewWidth);
+    				int height = (int)(mWaterFlow.getRatio(i)*mImageViewWidth);
     				
     				LayoutParams lp = flowViewElement.getLayoutParams();
     				if (lp == null) {
@@ -171,7 +172,7 @@ public class TabActivity extends Activity {
     private int []mColumnHeights;
     
     private LinearLayout mWaterFallView;
-    private WaterFlowElement []mWaterFlowData;
+    private WaterFlow mWaterFlow;
     
     private String TAG = "TabActivity";
 }

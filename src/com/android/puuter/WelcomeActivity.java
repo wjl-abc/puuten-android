@@ -15,7 +15,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.puuter.Controller;
-import com.android.puuter.model.WaterFlowElement;
+import com.android.puuter.model.WaterFlow;
 
 public class WelcomeActivity extends Activity {
 
@@ -91,7 +91,7 @@ public class WelcomeActivity extends Activity {
     		}
     	}
     	
-    	public void downloadResource(boolean status, WaterFlowElement []waterFlowData){
+    	public void downloadResource(boolean status, WaterFlow waterFlow){
     	}
     }
     
