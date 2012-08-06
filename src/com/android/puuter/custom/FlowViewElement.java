@@ -18,11 +18,13 @@ public class FlowViewElement extends ImageView implements View.OnClickListener{
 	private Drawable mDrawable;
 	private Handler mViewHandler;
 	
+	private final int IMAGE_DOWNLOAD = 1;
 	private final int IMAGE_DOWNLOAD_SUCCESS = 1;
-	private final int IMAGE_DOWNLOAD_FAIL = 2;
+	private final int IMAGE_DOWNLOAD_FAIL = 0;
+	private final int IMAGE_CLICKED = 3;
 	
 	//image id in server
-	private int mId;
+	private int mWBId;
 	//image url
 	private String mUrl;
 	//image height/width ratio
@@ -91,11 +93,11 @@ public class FlowViewElement extends ImageView implements View.OnClickListener{
 	}
 	
 	public int getId(){
-		return mId;
+		return mWBId;
 	}
 	
 	public void setId(int id){
-		mId = id;
+		mWBId = id;
 	}
 	
 	public int getRowId(){
@@ -117,8 +119,11 @@ public class FlowViewElement extends ImageView implements View.OnClickListener{
 
 	@Override
 	public void onClick(View v) {
-		Log.d(TAG, "webo id: "+mId+" clicked");
-		Toast.makeText(mContext, "webo id: "+mId+" clicked", Toast.LENGTH_SHORT).show();
+		//send message to main activity
+		int what = IMAGE_CLICKED;
+		Handler h = getViewHandler();
+		Message m = h.obtainMessage(what, mWBId, 0, FlowViewElement.this);
+		h.sendMessage(m);
 	}
 	
 	private void downloadImage(){
@@ -127,9 +132,10 @@ public class FlowViewElement extends ImageView implements View.OnClickListener{
 //				Log.d(TAG, "begin "+mRowId+" "+mColId+" "+mUrl);
 				mDrawable = mController.loadImage(mUrl);
 //				Log.d(TAG, "end "+mRowId+" "+mColId+" "+mUrl);
-				int what = mDrawable==null ? IMAGE_DOWNLOAD_FAIL : IMAGE_DOWNLOAD_SUCCESS;
+				int what = IMAGE_DOWNLOAD;
+				int status = mDrawable==null ? IMAGE_DOWNLOAD_FAIL : IMAGE_DOWNLOAD_SUCCESS;
 				Handler h = getViewHandler();
-				Message m = h.obtainMessage(what, mRowId, mColId, FlowViewElement.this);
+				Message m = h.obtainMessage(what, status, mWBId, FlowViewElement.this);
 				h.sendMessage(m);
 			}
 		}.start();

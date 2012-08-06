@@ -20,6 +20,7 @@ import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 public class TabActivity extends Activity {
 	
@@ -85,53 +86,62 @@ public class TabActivity extends Activity {
     }
     
     private class TabHandler extends Handler{
-    	private final int IMAGE_DOWNLOAD_SUCCESS = 1;
-    	private final int IMAGE_DOWNLOAD_FAIL = 2;
-    	private final int RESOURCE_DOWNLOAD_SUCCESS = 3;
-    	private final int RESOURCE_DOWNLOAD_FAIL = 4;
+    	private final int IMAGE_DOWNLOAD = 1;
+    	private final int RESOURCE_DOWNLOAD = 2;
+    	private final int IMAGE_CLICKED = 3;
     	
     	public void handleMessage(android.os.Message msg){
+    		// 0 means fail
+    		int status = 0;
     		switch(msg.what){
-    		case IMAGE_DOWNLOAD_SUCCESS:
-    			int rowId = msg.arg1;
-    			int colId = msg.arg2;
-    			FlowViewElement fvw = (FlowViewElement) msg.obj;
-    			Drawable drawable = fvw.getDrawableImage();
-    			Bitmap bitmapTmp = ((BitmapDrawable)drawable).getBitmap();
-    			float scale = mImageViewWidth/((float)bitmapTmp.getWidth());
-    			Matrix matrix = new Matrix();
-    			matrix.postScale(scale, scale);
-    			Bitmap bitmap = Bitmap.createBitmap(bitmapTmp, 0, 0, bitmapTmp.getWidth(), bitmapTmp.getHeight(), matrix, true);
-    			bitmapTmp.recycle();
-    			fvw.setImageBitmap(bitmap);
-    			break;
-    		case IMAGE_DOWNLOAD_FAIL:
-    			Log.d(TAG, "download pic fail");
-    			break;
-    		case RESOURCE_DOWNLOAD_SUCCESS:
-    			int len = mWaterFlow.getDataLen();
-    			for(int i=0; i<len; i++){
-    				int columnIndex = GetMinValue(mColumnHeights);
-    				FlowViewElement flowViewElement = new FlowViewElement(mContext, mTabHandler);
-    				flowViewElement.setUrl(mWaterFlow.getPicUrl(i));
-    				flowViewElement.setRatio(mWaterFlow.getRatio(i));
-    				flowViewElement.setId(mWaterFlow.getId(i));
-    				
-    				int height = (int)(mWaterFlow.getRatio(i)*mImageViewWidth);
-    				
-    				LayoutParams lp = flowViewElement.getLayoutParams();
-    				if (lp == null) {
-						lp = new LayoutParams(mImageViewWidth, height);
-					}
-    				flowViewElement.setLayoutParams(lp);
-    				mWaterFallArray.get(columnIndex).addView(flowViewElement);
-    				mColumnHeights[columnIndex] += height;
-    				int row = mWaterFallArray.get(columnIndex).indexOfChild(flowViewElement);
-    				int col = columnIndex;
-    				flowViewElement.setPosition(row, col);
+    		case IMAGE_DOWNLOAD:
+    			status = msg.arg1;
+    			if(status == 1){
+	    			FlowViewElement fvw = (FlowViewElement) msg.obj;
+	    			Drawable drawable = fvw.getDrawableImage();
+	    			Bitmap bitmapTmp = ((BitmapDrawable)drawable).getBitmap();
+	    			float scale = mImageViewWidth/((float)bitmapTmp.getWidth());
+	    			Matrix matrix = new Matrix();
+	    			matrix.postScale(scale, scale);
+	    			Bitmap bitmap = Bitmap.createBitmap(bitmapTmp, 0, 0, bitmapTmp.getWidth(), bitmapTmp.getHeight(), matrix, true);
+	    			bitmapTmp.recycle();
+	    			fvw.setImageBitmap(bitmap);
+    			}else{
+    				Log.d(TAG, "download pic fail");
     			}
     			break;
-    		case RESOURCE_DOWNLOAD_FAIL:
+    		case RESOURCE_DOWNLOAD:
+    			status = msg.arg1;
+    			if(status == 1){
+	    			int len = mWaterFlow.getDataLen();
+	    			int sizeBeforeUpdater = mWaterFlow.getSizeBeforeUpdate();
+	    			for(int i=sizeBeforeUpdater; i<len; i++){
+	    				int columnIndex = GetMinValue(mColumnHeights);
+	    				FlowViewElement flowViewElement = new FlowViewElement(mContext, mTabHandler);
+	    				flowViewElement.setUrl(mWaterFlow.getPicUrl(i));
+	    				flowViewElement.setRatio(mWaterFlow.getRatio(i));
+	    				flowViewElement.setId(mWaterFlow.getWBId(i));
+	    				
+	    				int height = (int)(mWaterFlow.getRatio(i)*mImageViewWidth);
+	    				
+	    				LayoutParams lp = flowViewElement.getLayoutParams();
+	    				if (lp == null) {
+							lp = new LayoutParams(mImageViewWidth, height);
+						}
+	    				flowViewElement.setLayoutParams(lp);
+	    				mWaterFallArray.get(columnIndex).addView(flowViewElement);
+	    				mColumnHeights[columnIndex] += height;
+	    				int row = mWaterFallArray.get(columnIndex).indexOfChild(flowViewElement);
+	    				int col = columnIndex;
+	    				flowViewElement.setPosition(row, col);
+	    			}
+    			}else{
+    				//do nothing
+    			}
+    			break;
+    		case IMAGE_CLICKED:
+    			int wbId = msg.arg1;
+    			Toast.makeText(mContext, "webo id: "+wbId+" clicked", Toast.LENGTH_SHORT).show();
     			break;
     		default:
     			super.handleMessage(msg);
@@ -139,11 +149,12 @@ public class TabActivity extends Activity {
     	}
     	
     	public void downloadResourceStatus(boolean status){
+    		int what = RESOURCE_DOWNLOAD;
     		if(status == true){
-    			android.os.Message msg = android.os.Message.obtain(this, RESOURCE_DOWNLOAD_SUCCESS);
+    			android.os.Message msg = android.os.Message.obtain(this, what, 1, 0);
     			sendMessage(msg);
     		}else{
-    			android.os.Message msg = android.os.Message.obtain(this, RESOURCE_DOWNLOAD_FAIL);
+    			android.os.Message msg = android.os.Message.obtain(this, what, 0, 0);
     			sendMessage(msg);
     		}
     	}

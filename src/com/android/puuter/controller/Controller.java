@@ -39,8 +39,8 @@ public class Controller {
 	public void loadResource(int id, final Result resultCallback){
 		String url = Setting.rootUrl + "/" + Setting.eventPath;
 		String jsonStr = mHttpController.retrieveRemoteData(url);
-		WaterFlow waterFlow = new WaterFlow(jsonStr);
-		waterFlow.parseJson();
+		WaterFlow waterFlow = new WaterFlow();
+		waterFlow.parseJson(jsonStr);
 		resultCallback.downloadResource(true, waterFlow);
 	}
 	
