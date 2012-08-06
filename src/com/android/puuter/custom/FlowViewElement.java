@@ -10,6 +10,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class FlowViewElement extends ImageView implements View.OnClickListener{
 	private Context mContext;
@@ -39,6 +40,7 @@ public class FlowViewElement extends ImageView implements View.OnClickListener{
 		mContext = c;
 		mController = Controller.getInstance(mContext);
 		mViewHandler = viewHandler;
+		setOnClickListener(this);
 		
 		downloadImage();
 	}
@@ -48,6 +50,7 @@ public class FlowViewElement extends ImageView implements View.OnClickListener{
 		mContext = c;
 		mController = Controller.getInstance(mContext);
 		mViewHandler = viewHandler;
+		setOnClickListener(this);
 		
 		downloadImage();
 	}
@@ -58,6 +61,7 @@ public class FlowViewElement extends ImageView implements View.OnClickListener{
 		mContext = c;
 		mController = Controller.getInstance(mContext);
 		mViewHandler = viewHandler;
+		setOnClickListener(this);
 		
 		downloadImage();
 	}
@@ -113,7 +117,8 @@ public class FlowViewElement extends ImageView implements View.OnClickListener{
 
 	@Override
 	public void onClick(View v) {
-		
+		Log.d(TAG, "webo id: "+mId+" clicked");
+		Toast.makeText(mContext, "webo id: "+mId+" clicked", Toast.LENGTH_SHORT).show();
 	}
 	
 	private void downloadImage(){

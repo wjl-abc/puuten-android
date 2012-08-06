@@ -33,6 +33,9 @@ public class WaterFlow {
 				mWaterFlowData[i].mPicUrl = "http://www.huaxia.com/uniwaysimages/200510/zw201302271.jpg";
 				mWaterFlowData[i].mId = jsonArray.getJSONObject(i).getInt("wb_id");
 				mWaterFlowData[i].mRatio = jsonArray.getJSONObject(i).getInt("ratio");
+				Log.d(TAG, "weibo id: " + mWaterFlowData[i].mId);
+				Log.d(TAG, "name: " + mWaterFlowData[i].mName);
+				Log.d(TAG, "body: " +mWaterFlowData[i].mBody);
 			}
 		}catch(Exception e){
 			Log.v(TAG, "json parse fail, json data:" + jsonStr);
