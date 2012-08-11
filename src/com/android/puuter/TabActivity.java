@@ -18,8 +18,12 @@ import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 public class TabActivity extends Activity {
@@ -36,9 +40,13 @@ public class TabActivity extends Activity {
         setContentView(R.layout.activity_tab);
         
         mWaterFallView = (LinearLayout) findViewById(R.id.waterFallContainer);
+        mWaterFallScrollView = (ScrollView) findViewById(R.id.waterFallScrollView);
+        
         mContext = this;
         mController = Controller.getInstance(mContext);
         mResultCallback = new ControllerResults();
+        
+        mWaterFallScrollView.setOnTouchListener(new WaterFallOnTouchListener());
         mTotalNum = 0;
         mTabHandler = new TabHandler();
         mImageViewWidth = getWindowManager().getDefaultDisplay().getWidth()/mDisplayCols;
@@ -160,6 +168,26 @@ public class TabActivity extends Activity {
     	}
     }
     
+    private class WaterFallOnTouchListener implements OnTouchListener{
+		public boolean onTouch(View v, MotionEvent event) {
+			switch (event.getAction()) {
+			case MotionEvent.ACTION_DOWN:
+				break;
+			case MotionEvent.ACTION_UP:
+				View view = mWaterFallScrollView.getChildAt(0);
+				if(view != null){
+					if(view.getMeasuredHeight() - 20 <= mWaterFallScrollView.getScrollY() + mWaterFallScrollView.getHeight()){
+						Toast.makeText(mContext, "to the end", Toast.LENGTH_LONG).show();
+					}
+				}
+				break;
+			default:
+				break;
+			}
+			return false;
+		}
+    }
+    
 	private int GetMinValue(int[] array) {
 		int m = 0;
 		int length = array.length;
@@ -187,6 +215,7 @@ public class TabActivity extends Activity {
     private int []mColumnHeights;
     
     private LinearLayout mWaterFallView;
+    private ScrollView mWaterFallScrollView;
     private WaterFlow mWaterFlow;
     
     private String TAG = "TabActivity";
