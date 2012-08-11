@@ -1,6 +1,7 @@
 package com.android.puuter.controller;
 
 import com.android.puuter.model.WaterFlow;
+import com.android.puuter.model.WbDetail;
 import com.android.puuter.setting.Setting;
 
 import android.content.Context;
@@ -48,6 +49,7 @@ public class Controller {
 		//only for login
 		public void loginServerCallBack(Context context, int progress);
 		public void downloadResource(boolean status, WaterFlow waterFlow);
+		public void downloadResourceWbDetail(boolean status, WbDetail wbd);
 	}
 	
 	private static Controller sInstance;

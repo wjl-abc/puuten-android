@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.android.puuter.controller.Controller;
 import com.android.puuter.model.WaterFlow;
+import com.android.puuter.model.WbDetail;
 
 public class WelcomeActivity extends Activity {
 
@@ -93,6 +94,9 @@ public class WelcomeActivity extends Activity {
     	
     	public void downloadResource(boolean status, WaterFlow waterFlow){
     	}
+		
+		public void downloadResourceWbDetail(boolean status, WbDetail wbd){
+		}
     }
     
     private class LoginHandler extends Handler{

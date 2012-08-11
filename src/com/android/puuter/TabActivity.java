@@ -6,6 +6,7 @@ import com.android.puuter.controller.Controller;
 import com.android.puuter.controller.Controller.Result;
 import com.android.puuter.custom.FlowViewElement;
 import com.android.puuter.model.WaterFlow;
+import com.android.puuter.model.WbDetail;
 import com.android.puuter.setting.Setting;
 
 import android.os.Bundle;
@@ -90,6 +91,9 @@ public class TabActivity extends Activity {
 		public void downloadResource(boolean status, WaterFlow waterFlow) {
 			mWaterFlow = waterFlow;
 			mTabHandler.downloadResourceStatus(status);
+		}
+		
+		public void downloadResourceWbDetail(boolean status, WbDetail wbd){
 		}
 	}
 
@@ -177,7 +181,6 @@ public class TabActivity extends Activity {
 				View view = mWaterFallScrollView.getChildAt(0);
 				if (view != null) {
 					if (view.getMeasuredHeight() - 20 <= mWaterFallScrollView.getScrollY() + mWaterFallScrollView.getHeight()) {
-//						Toast.makeText(mContext, "to the end", Toast.LENGTH_LONG).show();
 						new Thread() {
 							public void run() {
 								loadResource();
