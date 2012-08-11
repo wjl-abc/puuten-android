@@ -41,8 +41,17 @@ public class Controller {
 		String url = Setting.rootUrl + "/" + Setting.eventPath;
 		String jsonStr = mHttpController.retrieveRemoteData(url);
 		WaterFlow waterFlow = new WaterFlow();
-		waterFlow.parseJson(jsonStr);
-		resultCallback.downloadResource(true, waterFlow);
+		int ret = waterFlow.parseJson(jsonStr);
+		resultCallback.downloadResource(ret==0? true:false, waterFlow);
+	}
+	
+	public void loadResourceWbDetail(int wbId, final Result resultCallback){
+		String url = Setting.rootUrl + "/" + Setting.idDetail + "/" + wbId + "/";
+		Log.d(TAG, url);
+		String jsonStr = mHttpController.retrieveRemoteData(url);
+		WbDetail wbd = new WbDetail(wbId);
+		int ret = wbd.parseJsonToWbDetail(jsonStr);
+		resultCallback.downloadResourceWbDetail(ret==0? true:false, wbd);
 	}
 	
 	public interface Result{

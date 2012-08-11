@@ -6,7 +6,7 @@ public final class Setting {
 	public static final String loginPath = "account/login/";
 	public static final String profilePath = "profiles/profile";
 	public static final String eventPath = "home/event_lib/";
-	public static final String idDetail = "/business/wb/";
+	public static final String idDetail = "business/wb";
 	
 	//display setting
 	public static final int displayCols = 3;

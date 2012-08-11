@@ -153,7 +153,7 @@ public class TabActivity extends Activity {
 				break;
 			case IMAGE_CLICKED:
 				int wbId = msg.arg1;
-				Toast.makeText(mContext, "webo id: " + wbId + " clicked", Toast.LENGTH_SHORT).show();
+				DetailInfo.actionView(mContext, wbId);
 				break;
 			default:
 				super.handleMessage(msg);
