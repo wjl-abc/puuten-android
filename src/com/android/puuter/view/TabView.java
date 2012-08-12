@@ -46,15 +46,15 @@ public class TabView extends TabActivity implements OnCheckedChangeListener{
 		case R.id.radio_button1:
 			mHost.setCurrentTabByTag("TWO");
 			break;
-		case R.id.radio_button2:
-			mHost.setCurrentTabByTag("THREE");
-			break;
-		case R.id.radio_button3:
-			mHost.setCurrentTabByTag("FOUR");
-			break;
-		case R.id.radio_button4:
-			mHost.setCurrentTabByTag("FIVE");
-			break;
+//		case R.id.radio_button2:
+//			mHost.setCurrentTabByTag("THREE");
+//			break;
+//		case R.id.radio_button3:
+//			mHost.setCurrentTabByTag("FOUR");
+//			break;
+//		case R.id.radio_button4:
+//			mHost.setCurrentTabByTag("FIVE");
+//			break;
 		}		
 	}
 	

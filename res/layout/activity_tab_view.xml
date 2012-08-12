@@ -35,10 +35,10 @@
                 android:id="@+id/radio_button0"
                 style="@style/main_tab_bottom"
                 android:layout_marginTop="2.0dip"
-                android:drawableTop="@drawable/icon_1"
-                android:tag="radio_button0"
-                android:text="@string/alarm" />
-
+                android:drawableTop="@drawable/icon_3"
+                android:tag="radio_button2"
+                android:text="@string/photo" />
+            
             <RadioButton
                 android:id="@+id/radio_button1"
                 style="@style/main_tab_bottom"
@@ -46,14 +46,14 @@
                 android:drawableTop="@drawable/icon_2"
                 android:tag="radio_button1"
                 android:text="@string/message" />
-
+<!--
             <RadioButton
                 android:id="@+id/radio_button2"
                 style="@style/main_tab_bottom"
                 android:layout_marginTop="2.0dip"
-                android:drawableTop="@drawable/icon_3"
-                android:tag="radio_button2"
-                android:text="@string/photo" />
+                android:drawableTop="@drawable/icon_1"
+                android:tag="radio_button0"
+                android:text="@string/alarm" />
 
             <RadioButton
                 android:id="@+id/radio_button3"
@@ -70,6 +70,7 @@
                 android:drawableTop="@drawable/icon_5"
                 android:tag="radio_button4"
                 android:text="@string/setting" />
+-->
         </RadioGroup>
     </LinearLayout>
 

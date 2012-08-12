@@ -28,7 +28,7 @@ public class DetailInfoView extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail_info);
+        setContentView(R.layout.activity_detail_info_view);
         
         
         mName = (TextView) findViewById(R.id.bs_name);
