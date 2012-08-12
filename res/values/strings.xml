@@ -10,5 +10,6 @@
     <string name="title_activity_tab">TabActivity</string>
     <string name="title_activity_com.android.puuter.flowviewelement">flowviewelement</string>
     <string name="title_activity_detail_info">DetailInfo</string>
+    <string name="title_activity_water_flow_view">WaterFlowView</string>
 
 </resources>

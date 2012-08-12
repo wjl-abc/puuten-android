@@ -27,10 +27,10 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
-public class TabActivity extends Activity {
+public class WaterFlowView extends Activity {
 
 	public static void actionView(Context context, int tabId) {
-		Intent i = new Intent(context, TabActivity.class);
+		Intent i = new Intent(context, WaterFlowView.class);
 		i.putExtra(EXTRA_TAB_ID, tabId);
 		context.startActivity(i);
 	}
@@ -38,7 +38,7 @@ public class TabActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_tab);
+		setContentView(R.layout.activity_water_flow_view);
 
 		mWaterFallView = (LinearLayout) findViewById(R.id.waterFallContainer);
 		mWaterFallScrollView = (ScrollView) findViewById(R.id.waterFallScrollView);
