@@ -109,7 +109,7 @@ public class WelcomeActivity extends Activity {
     				mLoginProgressBar.setVisibility(View.VISIBLE);
     			}else if(msg.arg1 == 100){
     				mLoginProgressBar.setVisibility(View.GONE);
-    				WaterFlowView.actionView(mContext, 0);
+    				TabView.actionView(mContext);
     			}else if(msg.arg1 < 0){
     				mLoginProgressBar.setVisibility(View.GONE);
         			Toast.makeText(mContext, "login canceled or exception occured", Toast.LENGTH_LONG).show();

@@ -11,5 +11,14 @@
     <string name="title_activity_com.android.puuter.flowviewelement">flowviewelement</string>
     <string name="title_activity_detail_info">DetailInfo</string>
     <string name="title_activity_water_flow_view">WaterFlowView</string>
+    <string name="title_activity_tab_view">TabView</string>
+    <string name="photo">图片</string>
+    <string name="music">音乐</string>
+    <string name="alarm">闹钟</string>
+    <string name="message">信息</string>
+    <string name="setting">设置</string>
+
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
 
 </resources>

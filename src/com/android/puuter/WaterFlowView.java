@@ -25,13 +25,11 @@ import android.view.View.OnTouchListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
-import android.widget.Toast;
 
 public class WaterFlowView extends Activity {
 
-	public static void actionView(Context context, int tabId) {
+	public static void actionView(Context context) {
 		Intent i = new Intent(context, WaterFlowView.class);
-		i.putExtra(EXTRA_TAB_ID, tabId);
 		context.startActivity(i);
 	}
 
@@ -206,8 +204,6 @@ public class WaterFlowView extends Activity {
 		}
 		return m;
 	}
-
-	private final static String EXTRA_TAB_ID = "tab_id";
 
 	private ArrayList<LinearLayout> mWaterFallArray;
 

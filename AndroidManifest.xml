@@ -38,6 +38,10 @@
             android:name=".WaterFlowView"
             android:label="@string/title_activity_water_flow_view" >
         </activity>
+        <activity
+            android:name=".TabView"
+            android:label="@string/title_activity_tab_view" >
+        </activity>
     </application>
 
 </manifest>
