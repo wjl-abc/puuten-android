@@ -35,7 +35,8 @@ public final class R {
         public static final int icon_3=0x7f020007;
         public static final int icon_4=0x7f020008;
         public static final int icon_5=0x7f020009;
-        public static final int maintab_toolbar_bg=0x7f02000a;
+        public static final int imageviewbackground=0x7f02000a;
+        public static final int maintab_toolbar_bg=0x7f02000b;
     }
     public static final class id {
         public static final int TextView01=0x7f09000b;

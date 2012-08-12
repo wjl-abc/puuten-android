@@ -129,6 +129,8 @@ public class WaterFlowView extends Activity {
 					for (int i = sizeBeforeUpdater; i < len; i++) {
 						int columnIndex = GetMinValue(mColumnHeights);
 						FlowViewElement flowViewElement = new FlowViewElement(mContext, mTabHandler);
+						flowViewElement.setAdjustViewBounds(true);
+						flowViewElement.setPadding(5, 5, 5, 5);
 						flowViewElement.setUrl(mWaterFlow.getPicUrl(i));
 						flowViewElement.setRatio(mWaterFlow.getRatio(i));
 						flowViewElement.setId(mWaterFlow.getWBId(i));

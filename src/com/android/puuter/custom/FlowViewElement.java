@@ -3,6 +3,10 @@ package com.android.puuter.custom;
 import com.android.puuter.controller.Controller;
 
 import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
@@ -125,6 +129,22 @@ public class FlowViewElement extends ImageView implements View.OnClickListener{
 		Message m = h.obtainMessage(what, mWBId, 0, FlowViewElement.this);
 		h.sendMessage(m);
 	}
+	
+	@Override
+	protected void onDraw(Canvas canvas) {
+		super.onDraw(canvas);
+		//画边框
+		Rect rec=canvas.getClipBounds();
+		rec.bottom -= 5;
+		rec.right -= 5;
+		Paint paint=new Paint();
+		paint.setColor(Color.BLACK);
+//		paint.setARGB(100,100,100,100);
+		paint.setStyle(Paint.Style.STROKE);
+		canvas.drawRect(rec, paint);
+		Log.d(TAG, "in onDraw " + mWBId);
+	}
+
 	
 	private void downloadImage(){
 		new Thread(){
