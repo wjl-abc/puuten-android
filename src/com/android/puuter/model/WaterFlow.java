@@ -28,13 +28,13 @@ public class WaterFlow {
 				waterFlowData.mBody = jsonArray.getJSONObject(i).getString("body");
 				waterFlowData.mPicUrl = jsonArray.getJSONObject(i).getString("thumbnail_pic");
 				waterFlowData.mWBId = jsonArray.getJSONObject(i).getInt("wb_id");
-				waterFlowData.mRatio = jsonArray.getJSONObject(i).getInt("ratio");
+				waterFlowData.mRatio = (float)jsonArray.getJSONObject(i).getDouble("ratio");
 				mWBId2index.put(waterFlowData.mWBId, mSizeBeforeUpdate+i);
 				mWaterFlowData.add(waterFlowData);
 				
 //				Log.d(TAG, "weibo id: " + waterFlowData.mWBId);
 //				Log.d(TAG, "name: " + waterFlowData.mName);
-//				Log.d(TAG, "body: " + waterFlowData.mBody);
+//				Log.d(TAG, "ratio: " + waterFlowData.mRatio);
 			}
 		}catch(Exception e){
 			Log.v(TAG, "json parse fail, json data:" + jsonStr);

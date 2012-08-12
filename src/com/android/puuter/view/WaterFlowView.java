@@ -114,7 +114,7 @@ public class WaterFlowView extends Activity {
 					float scale = mImageViewWidth / ((float) bitmapTmp.getWidth());
 					Matrix matrix = new Matrix();
 					matrix.postScale(scale, scale);
-					Bitmap bitmap = Bitmap.createBitmap(bitmapTmp, 0, 0, bitmapTmp.getWidth(), bitmapTmp.getHeight(), matrix, true);
+					Bitmap bitmap = Bitmap.createBitmap(bitmapTmp, 0, 0, bitmapTmp.getWidth(), bitmapTmp.getHeight(), matrix, false);
 					bitmapTmp.recycle();
 					fvw.setImageBitmap(bitmap);
 				} else {
@@ -130,12 +130,13 @@ public class WaterFlowView extends Activity {
 						int columnIndex = GetMinValue(mColumnHeights);
 						FlowViewElement flowViewElement = new FlowViewElement(mContext, mTabHandler);
 						flowViewElement.setAdjustViewBounds(true);
-						flowViewElement.setPadding(5, 5, 5, 5);
+						flowViewElement.setPadding(2, 2, 2, 2);
 						flowViewElement.setUrl(mWaterFlow.getPicUrl(i));
 						flowViewElement.setRatio(mWaterFlow.getRatio(i));
 						flowViewElement.setId(mWaterFlow.getWBId(i));
 
 						int height = (int) (mWaterFlow.getRatio(i) * mImageViewWidth);
+//						Log.d(TAG, "height: "+height + " ratio: " + mWaterFlow.getRatio(i) + " i:" + i);
 
 						LayoutParams lp = flowViewElement.getLayoutParams();
 						if (lp == null) {

@@ -81,11 +81,11 @@ public class WelcomeActivity extends Activity {
     		switch(progress){
     		case 0:
     			mHandler.progress(0);
-    			Log.d(TAG, "login begin");
+//    			Log.d(TAG, "login begin");
     			break;
     		case 100:
     			mHandler.progress(100);
-    			Log.d(TAG, "login success");
+//    			Log.d(TAG, "login success");
     			break;
     		case -1:
     			mHandler.progress(-1);

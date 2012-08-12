@@ -34,7 +34,7 @@ public class Controller {
 		parms.put("password", password);
 		parms.put("mobile", "android");
 		int id = mHttpController.loginRemote(url, parms);
-		Log.d(TAG, "id:"+id);
+//		Log.d(TAG, "id:"+id);
 		if(id > 0){
 			resultCallback.loginServerCallBack(context, 100);
 		}else{

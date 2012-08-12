@@ -132,17 +132,19 @@ public class FlowViewElement extends ImageView implements View.OnClickListener{
 	
 	@Override
 	protected void onDraw(Canvas canvas) {
-		super.onDraw(canvas);
+//		super.onDraw(canvas);
 		//画边框
 		Rect rec=canvas.getClipBounds();
-		rec.bottom -= 5;
-		rec.right -= 5;
+		rec.top += 2;
+		rec.left += 2;
+		rec.bottom -= 2;
+		rec.right -= 2;
 		Paint paint=new Paint();
-		paint.setColor(Color.BLACK);
-//		paint.setARGB(100,100,100,100);
-		paint.setStyle(Paint.Style.STROKE);
+		paint.setColor(Color.GRAY);
+		paint.setStyle(Paint.Style.FILL);
 		canvas.drawRect(rec, paint);
-		Log.d(TAG, "in onDraw " + mWBId);
+//		Log.d(TAG, "in onDraw " + mUrl);
+		super.onDraw(canvas);
 	}
 
 	

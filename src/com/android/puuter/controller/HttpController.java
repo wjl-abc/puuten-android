@@ -86,6 +86,7 @@ public final class HttpController{
 			HttpResponse httpResponse = httpClient.execute(httpPost);
 			if(httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK){
 				strResult = EntityUtils.toString(httpResponse.getEntity()).replaceAll("\r", "");
+//				Log.d(TAG, strResult);
 			}else{
 				Log.e(TAG, "connect fail");
 			}
