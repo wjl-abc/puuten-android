@@ -3,6 +3,8 @@ package com.android.puuter.controller;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -35,16 +37,14 @@ public final class HttpController{
 		return mHttpController;
 	}
 	
-	public int loginRemote(String username, String password){
-		String url = Setting.rootUrl + "/" + Setting.loginPath;
-		Log.d(TAG, url);
+	public int loginRemote(String url, HashMap<String, String> parmsMap){
 		HttpPost httpPost = new HttpPost(url);
 		ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
-		params.add(new BasicNameValuePair("username", username));
-		params.add(new BasicNameValuePair("password", password));
-		Log.d(TAG, "username:"+username);
-		Log.d(TAG, "passwd:"+password);
-		params.add(new BasicNameValuePair("mobile", "android"));
+		Iterator iterator = parmsMap.keySet().iterator();                
+        while (iterator.hasNext()) {    
+         Object key = iterator.next();  
+         params.add(new BasicNameValuePair(key.toString(), parmsMap.get(key)));
+        }
 		try {
 			HttpEntity httpEntity = new UrlEncodedFormEntity(params, "gb2312");
 			httpPost.setEntity(httpEntity);
@@ -64,7 +64,7 @@ public final class HttpController{
 		return -1;
 	}
 	
-	public String retrieveRemoteData(String url){
+	public String retrieveRemoteData(String url, HashMap<String, String> parmsMap){
 		String strResult = null;
 		if(mCookiestore == null){
 			Log.v(TAG, "You have not login");
@@ -74,7 +74,11 @@ public final class HttpController{
 		try{
 			HttpPost httpPost = new HttpPost(url);
 			ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
-			params.add(new BasicNameValuePair("mobile", "android"));
+			Iterator iterator = parmsMap.keySet().iterator();                
+            while (iterator.hasNext()) {    
+             Object key = iterator.next();  
+             params.add(new BasicNameValuePair(key.toString(), parmsMap.get(key)));
+            }
 			HttpEntity httpEntity = new UrlEncodedFormEntity(params, "gb2312");
 			httpPost.setEntity(httpEntity);
 			DefaultHttpClient httpClient = new DefaultHttpClient();
