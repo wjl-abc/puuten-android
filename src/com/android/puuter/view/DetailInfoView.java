@@ -1,5 +1,6 @@
-package com.android.puuter;
+package com.android.puuter.view;
 
+import com.android.puuter.R;
 import com.android.puuter.controller.Controller;
 import com.android.puuter.controller.Controller.Result;
 import com.android.puuter.model.WaterFlow;
@@ -16,10 +17,10 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 
-public class DetailInfo extends Activity {
+public class DetailInfoView extends Activity {
 
 	public static void actionView(Context context, int wbId) {
-		Intent i = new Intent(context, DetailInfo.class);
+		Intent i = new Intent(context, DetailInfoView.class);
 		i.putExtra(EXTRA_WB_ID, wbId);
 		context.startActivity(i);
 	}
@@ -143,3 +144,4 @@ public class DetailInfo extends Activity {
 	private int mWbId;
 	private Drawable mDrawable;
 }
+

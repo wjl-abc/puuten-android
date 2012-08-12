@@ -1,4 +1,6 @@
-package com.android.puuter;
+package com.android.puuter.view;
+
+import com.android.puuter.R;
 
 import android.os.Bundle;
 import android.app.TabActivity;

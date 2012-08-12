@@ -1,4 +1,4 @@
-package com.android.puuter;
+package com.android.puuter.view;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.android.puuter.R;
 import com.android.puuter.controller.Controller;
 import com.android.puuter.model.WaterFlow;
 import com.android.puuter.model.WbDetail;

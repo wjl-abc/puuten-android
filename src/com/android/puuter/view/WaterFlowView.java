@@ -1,7 +1,8 @@
-package com.android.puuter;
+package com.android.puuter.view;
 
 import java.util.ArrayList;
 
+import com.android.puuter.R;
 import com.android.puuter.controller.Controller;
 import com.android.puuter.controller.Controller.Result;
 import com.android.puuter.custom.FlowViewElement;
@@ -151,7 +152,7 @@ public class WaterFlowView extends Activity {
 				break;
 			case IMAGE_CLICKED:
 				int wbId = msg.arg1;
-				DetailInfo.actionView(mContext, wbId);
+				DetailInfoView.actionView(mContext, wbId);
 				break;
 			default:
 				super.handleMessage(msg);

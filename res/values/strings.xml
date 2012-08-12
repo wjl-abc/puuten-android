@@ -21,4 +21,6 @@
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
 
+    <string name="title_activity_detail_info_view">DetailInfoView</string>
+
 </resources>
