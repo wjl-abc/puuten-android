@@ -2,16 +2,12 @@ package com.android.puuter.controller;
 
 import java.util.HashMap;
 
-import org.apache.http.message.BasicNameValuePair;
-
 import com.android.puuter.model.WaterFlow;
 import com.android.puuter.model.WbDetail;
 import com.android.puuter.setting.Setting;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.os.SystemClock;
-import android.util.Log;
 
 public class Controller {
 	protected Controller(Context context){

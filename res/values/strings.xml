@@ -22,5 +22,8 @@
     <color name="black">#000000</color>
 
     <string name="title_activity_detail_info_view">DetailInfoView</string>
+    <string name="title_activity_friend_dynamic_info_view_element">FriendDynamicInfo</string>
+    <string name="title_activity_friend_dyn_info_element">FriendDynInfoElement</string>
+    <string name="title_activity_friend_brief_info">FriendBriefInfo</string>
 
 </resources>

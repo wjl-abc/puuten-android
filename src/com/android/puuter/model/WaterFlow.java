@@ -31,10 +31,6 @@ public class WaterFlow {
 				waterFlowData.mRatio = (float)jsonArray.getJSONObject(i).getDouble("ratio");
 				mWBId2index.put(waterFlowData.mWBId, mSizeBeforeUpdate+i);
 				mWaterFlowData.add(waterFlowData);
-				
-//				Log.d(TAG, "weibo id: " + waterFlowData.mWBId);
-//				Log.d(TAG, "name: " + waterFlowData.mName);
-//				Log.d(TAG, "ratio: " + waterFlowData.mRatio);
 			}
 		}catch(Exception e){
 			Log.v(TAG, "json parse fail, json data:" + jsonStr);

@@ -18,6 +18,7 @@
             android:label="@string/title_activity_welcome" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -36,6 +37,33 @@
         <activity
             android:name=".view.WaterFlowView"
             android:label="@string/title_activity_water_flow_view" >
+        </activity>
+        <activity
+            android:name=".FriendDynamicInfoViewElement"
+            android:label="@string/title_activity_friend_dynamic_info_view_element" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".FriendDynInfoElement"
+            android:label="@string/title_activity_friend_dyn_info_element" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".FriendBriefInfo"
+            android:label="@string/title_activity_friend_brief_info" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

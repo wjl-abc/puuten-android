@@ -42,33 +42,24 @@ public class FlowViewElement extends ImageView implements View.OnClickListener{
 	
 	public FlowViewElement(Context c, AttributeSet attrs, int defStyle, Handler viewHandler) {
 		super(c, attrs, defStyle);
-		
-		mContext = c;
-		mController = Controller.getInstance(mContext);
-		mViewHandler = viewHandler;
-		setOnClickListener(this);
-		
-		downloadImage();
+		init(c, viewHandler);
 	}
 
 	public FlowViewElement(Context c, AttributeSet attrs, Handler viewHandler) {
 		super(c, attrs);
-		mContext = c;
-		mController = Controller.getInstance(mContext);
-		mViewHandler = viewHandler;
-		setOnClickListener(this);
-		
-		downloadImage();
+		init(c, viewHandler);
 	}
 
 	public FlowViewElement(Context c, Handler viewHandler) {
 		super(c);
-		
-		mContext = c;
-		mController = Controller.getInstance(mContext);
+		init(c, viewHandler);
+	}
+	
+	private void init(Context context, Handler viewHandler){
+		mContext = context;
+		mController = Controller.getInstance(context);
 		mViewHandler = viewHandler;
 		setOnClickListener(this);
-		
 		downloadImage();
 	}
 	
