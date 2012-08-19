@@ -2,12 +2,14 @@ package com.android.puuter.custom;
 
 import com.android.puuter.R;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.content.Context;
 
-public class FriendBriefInfoElement extends RelativeLayout {
+public class FriendBriefInfoElement extends RelativeLayout  implements View.OnClickListener{
 
 	public FriendBriefInfoElement(Context context) {
 		super(context);
@@ -26,7 +28,6 @@ public class FriendBriefInfoElement extends RelativeLayout {
 
 	private void init(Context context) {
 		LayoutInflater.from(context).inflate(R.layout.friend_brief_info, this, true);
-		mNewestInfo = (FlowViewElement) findViewById(R.id.newestInfo);
 		mFriendPic = (FlowViewElement) findViewById(R.id.friendPic);
 		mTitle = (TextView) findViewById(R.id.title);
 		mFriendName = (TextView) findViewById(R.id.friendName);
@@ -34,7 +35,6 @@ public class FriendBriefInfoElement extends RelativeLayout {
 	}
 
 	public void setInfoGone() {
-		mNewestInfo.setVisibility(GONE);
 		mTitle.setVisibility(GONE);
 		mFriendName.setVisibility(GONE);
 		mFriendName.setVisibility(GONE);
@@ -42,15 +42,10 @@ public class FriendBriefInfoElement extends RelativeLayout {
 	}
 
 	public void setInfoVisible() {
-		mNewestInfo.setVisibility(VISIBLE);
 		mTitle.setVisibility(VISIBLE);
 		mFriendName.setVisibility(VISIBLE);
 		mFriendName.setVisibility(VISIBLE);
 		mFriendDynInfo.setVisibility(VISIBLE);
-	}
-	
-	public void setNewestInfo(String url){
-		mNewestInfo.setUrl(url);
 	}
 	
 	public void setFriendPic(String url){
@@ -70,18 +65,24 @@ public class FriendBriefInfoElement extends RelativeLayout {
 	}
 	
 	public void setFriendId(int id){
-		mFriendId = id;
+		mId = id;
 	}
 	
 	public int getFriendId(){
-		return mFriendId;
+		return mId;
 	}
 
-	private FlowViewElement mNewestInfo;
+	@Override
+	public void onClick(View v) {
+		Log.d(TAG, "hey, I am clicked");
+	}
+	
 	private FlowViewElement mFriendPic;
 	private TextView mTitle;
 	private TextView mFriendName;
 	private TextView mFriendDynInfo;
 	
-	private int mFriendId;
+	private int mId;
+	
+	private String TAG = "FriendBriefInfoElement";
 }

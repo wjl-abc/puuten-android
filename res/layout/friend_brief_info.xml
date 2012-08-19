@@ -2,21 +2,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content" >
-
-    <com.android.puuter.custom.FlowViewElement
-        android:id="@+id/newestInfo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:src="@drawable/ic_launcher" />
     
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/newestInfo"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
         android:text="TextView" />
 
     <com.android.puuter.custom.FlowViewElement
@@ -26,8 +18,7 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/title"
         android:layout_marginLeft="0dp"
-        android:layout_marginTop="0dp"
-        android:src="@drawable/ic_launcher" />
+        android:layout_marginTop="0dp"/>
 
     <TextView
         android:id="@+id/friendName"

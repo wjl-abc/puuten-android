@@ -132,7 +132,6 @@ public class WaterFlowView extends Activity {
 						flowViewElement.setAdjustViewBounds(true);
 						flowViewElement.setPadding(2, 2, 2, 2);
 						flowViewElement.setUrl(mWaterFlow.getPicUrl(i));
-						flowViewElement.setRatio(mWaterFlow.getRatio(i));
 						flowViewElement.setId(mWaterFlow.getWBId(i));
 
 						int height = (int) (mWaterFlow.getRatio(i) * mImageViewWidth);

@@ -13,6 +13,7 @@ public class WaterFlow {
 		mWBId2index = new HashMap<Integer, Integer>();
 		mSizeBeforeUpdate = 0;
 	}
+	
 	public int parseJson(String jsonStr){
 		if(jsonStr == null){
 			return -1;

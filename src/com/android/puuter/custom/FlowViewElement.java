@@ -28,11 +28,9 @@ public class FlowViewElement extends ImageView implements View.OnClickListener{
 	private final int IMAGE_CLICKED = 3;
 	
 	//image id in server
-	private int mWBId;
+	private int mId;
 	//image url
 	private String mUrl;
-	//image height/width ratio
-	private float mRatio;
 	
 	//image position in water flow
 	private int mRowId;
@@ -79,20 +77,12 @@ public class FlowViewElement extends ImageView implements View.OnClickListener{
 		mUrl = url;
 	}
 	
-	public float getRatio(){
-		return mRatio;
-	}
-	
-	public void setRatio(float ratio){
-		mRatio = ratio;
-	}
-	
 	public int getId(){
-		return mWBId;
+		return mId;
 	}
 	
 	public void setId(int id){
-		mWBId = id;
+		mId = id;
 	}
 	
 	public int getRowId(){
@@ -117,7 +107,7 @@ public class FlowViewElement extends ImageView implements View.OnClickListener{
 		//send message to main activity
 		int what = IMAGE_CLICKED;
 		Handler h = getViewHandler();
-		Message m = h.obtainMessage(what, mWBId, 0, FlowViewElement.this);
+		Message m = h.obtainMessage(what, mId, 0, FlowViewElement.this);
 		h.sendMessage(m);
 	}
 	
@@ -148,7 +138,7 @@ public class FlowViewElement extends ImageView implements View.OnClickListener{
 				int what = IMAGE_DOWNLOAD;
 				int status = mDrawable==null ? IMAGE_DOWNLOAD_FAIL : IMAGE_DOWNLOAD_SUCCESS;
 				Handler h = getViewHandler();
-				Message m = h.obtainMessage(what, status, mWBId, FlowViewElement.this);
+				Message m = h.obtainMessage(what, status, mId, FlowViewElement.this);
 				h.sendMessage(m);
 			}
 		}.start();
