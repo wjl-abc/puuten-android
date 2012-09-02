@@ -124,13 +124,13 @@ public class FriendDynInfoView extends Activity {
 						fdie.mFve.setUrl(mFriendDynInfo.getPicUrl(i));
 						fdie.mFve.setId(mFriendDynInfo.getWBId(i));
 						fdie.mFbi.setFriendPic(mFriendDynInfo.getFriendAvatar(i));
-						fdie.mFbi.setTitle(mFriendDynInfo.getFriendName(i));
+						fdie.mFbi.setTitle(mFriendDynInfo.getCompanyName(i));
 						fdie.mFbi.setFriendId(mFriendDynInfo.getWBId(i));
 						fdie.mFbi.setFriendName(mFriendDynInfo.getFriendName(i));
 						fdie.mFbi.setFriendDynInfo(mFriendDynInfo.getDynInfo(i));
 						fdie.setViewHandler(mFriendDynInfoHandler);
 						
-						int height = (int) (mFriendDynInfo.getRatio(i) * mImageViewWidth+80);
+						int height = (int) (mFriendDynInfo.getRatio(i) * mImageViewWidth+100);
 						LayoutParams lp = null;//FriendDynInfoElement.getLayoutParams();
 						if (lp == null) {
 							lp = new LayoutParams(mImageViewWidth, height);
@@ -180,7 +180,7 @@ public class FriendDynInfoView extends Activity {
 	private Context mContext;
 	// total images got from server
 	private int mTotalNum;
-	private int mDisplayCols = Setting.displayCols;
+	private int mDisplayCols = Setting.friendDisplayCols;
 	// Each imageview element width
 	private int mImageViewWidth;
 	private int[] mColumnHeights;

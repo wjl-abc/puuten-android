@@ -11,4 +11,5 @@ public final class Setting {
 	
 	//display setting
 	public static final int displayCols = 3;
+	public static final int friendDisplayCols = 2;
 }
