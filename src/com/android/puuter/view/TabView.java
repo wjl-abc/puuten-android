@@ -1,6 +1,7 @@
 package com.android.puuter.view;
 
 import com.android.puuter.R;
+import com.android.puuter.justtest;
 
 import android.os.Bundle;
 import android.app.TabActivity;
@@ -27,8 +28,8 @@ public class TabView extends TabActivity implements OnCheckedChangeListener{
         			.setContent(new Intent(this,WaterFlowView.class)));
         mHost.addTab(mHost.newTabSpec("TWO").setIndicator("TWO")
         		.setContent(new Intent(this,FriendDynInfoView.class)));
-//        mHost.addTab(mHost.newTabSpec("THREE").setIndicator("THREE")
-//        		.setContent(new Intent(this,ThreeActivity.class)));
+        mHost.addTab(mHost.newTabSpec("THREE").setIndicator("THREE")
+        		.setContent(new Intent(this,justtest.class)));
 //        mHost.addTab(mHost.newTabSpec("FOUR").setIndicator("FOUR")
 //        		.setContent(new Intent(this,FourActivity.class)));
 //        mHost.addTab(mHost.newTabSpec("FIVE").setIndicator("FIVE")
@@ -46,9 +47,9 @@ public class TabView extends TabActivity implements OnCheckedChangeListener{
 		case R.id.radio_button1:
 			mHost.setCurrentTabByTag("TWO");
 			break;
-//		case R.id.radio_button2:
-//			mHost.setCurrentTabByTag("THREE");
-//			break;
+		case R.id.radio_button2:
+			mHost.setCurrentTabByTag("THREE");
+			break;
 //		case R.id.radio_button3:
 //			mHost.setCurrentTabByTag("FOUR");
 //			break;

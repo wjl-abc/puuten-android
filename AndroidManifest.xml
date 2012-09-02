@@ -54,6 +54,10 @@
             android:name=".view.FriendDynInfoView"
             android:label="@string/title_activity_friend_dyn_info_view" >
         </activity>
+        <activity
+            android:name=".justtest"
+            android:label="@string/title_activity_justtest" >
+        </activity>
     </application>
 
 </manifest>
