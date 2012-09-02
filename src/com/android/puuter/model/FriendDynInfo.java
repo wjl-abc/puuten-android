@@ -31,13 +31,15 @@ public class FriendDynInfo {
 			for (int i = 0; i < len; i++) {
 				FriendDynInfoElement fdie = new FriendDynInfoElement();
 				fdie.mName = jsonArray.getJSONObject(i).getString("name");
-				fdie.mPicUrl = jsonArray.getJSONObject(i).getString("thumbnail");
+				fdie.mPicUrl = jsonArray.getJSONObject(i).getString("thumbnail_pic");
 				fdie.mWBId = jsonArray.getJSONObject(i).getInt("wb_id");
 				fdie.mRatio = (float) jsonArray.getJSONObject(i).getDouble("ratio");
 				fdie.mFriendName = jsonArray.getJSONObject(i).getString("user_name");
 				fdie.mFriendAvatar = jsonArray.getJSONObject(i).getString("avatar");
 				fdie.mPartnerName = jsonArray.getJSONObject(i).getString("partner");
 				fdie.mType = jsonArray.getJSONObject(i).getInt("type");
+				mWBId2index.put(fdie.mWBId, mSizeBeforeUpdate+i);
+				mFriendDynInfoData.add(fdie);
 			}
 		} catch (Exception e) {
 			Log.v(TAG, "json parse fail, json data:" + jsonStr);
@@ -106,7 +108,7 @@ public class FriendDynInfo {
 	// map from mWBId to index of mWaterFlowData
 	private HashMap<Integer, Integer> mWBId2index;
 	private int mSizeBeforeUpdate;
-	private String TAG = "WaterFlow";
+	private String TAG = "FriendDynInfo";
 
 	private final String[] mStrType;
 }

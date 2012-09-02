@@ -90,7 +90,7 @@ public class WelcomeActivity extends Activity {
     		}
     	}
     	
-    	public void downloadResource(boolean status, WaterFlow waterFlow){
+    	public void downloadResource(boolean status, Object data){
     	}
 		
 		public void downloadResourceWbDetail(boolean status, WbDetail wbd){

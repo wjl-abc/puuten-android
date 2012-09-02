@@ -1,6 +1,8 @@
 package com.android.puuter.custom;
 
 import com.android.puuter.R;
+
+import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -71,6 +73,15 @@ public class FriendBriefInfoElement extends RelativeLayout  implements View.OnCl
 	public int getFriendId(){
 		return mId;
 	}
+	
+	public Handler getViewHandler() {
+		return mViewHandler;
+	}
+
+	public void setViewHandler(Handler viewHandler) {
+		mViewHandler = viewHandler;
+		mFriendPic.setViewHandler(mViewHandler);
+	}
 
 	@Override
 	public void onClick(View v) {
@@ -83,6 +94,8 @@ public class FriendBriefInfoElement extends RelativeLayout  implements View.OnCl
 	private TextView mFriendDynInfo;
 	
 	private int mId;
+	
+	private Handler mViewHandler;
 	
 	private String TAG = "FriendBriefInfoElement";
 }

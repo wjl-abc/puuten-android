@@ -38,27 +38,25 @@ public class FlowViewElement extends ImageView implements View.OnClickListener{
 	
 	private String TAG = "FlowViewElement";
 	
-	public FlowViewElement(Context c, AttributeSet attrs, int defStyle, Handler viewHandler) {
+	public FlowViewElement(Context c, AttributeSet attrs, int defStyle) {
 		super(c, attrs, defStyle);
-		init(c, viewHandler);
+		init(c);
 	}
 
-	public FlowViewElement(Context c, AttributeSet attrs, Handler viewHandler) {
+	public FlowViewElement(Context c, AttributeSet attrs) {
 		super(c, attrs);
-		init(c, viewHandler);
+		init(c);
 	}
 
-	public FlowViewElement(Context c, Handler viewHandler) {
+	public FlowViewElement(Context c) {
 		super(c);
-		init(c, viewHandler);
+		init(c);
 	}
 	
-	private void init(Context context, Handler viewHandler){
+	private void init(Context context){
 		mContext = context;
 		mController = Controller.getInstance(context);
-		mViewHandler = viewHandler;
 		setOnClickListener(this);
-		downloadImage();
 	}
 	
 	public Handler getViewHandler() {
@@ -67,6 +65,7 @@ public class FlowViewElement extends ImageView implements View.OnClickListener{
 
 	public void setViewHandler(Handler viewHandler) {
 		mViewHandler = viewHandler;
+		downloadImage();
 	}
 	
 	public String getUrl(){

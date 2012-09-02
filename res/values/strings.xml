@@ -25,5 +25,6 @@
     <string name="title_activity_friend_dynamic_info_view_element">FriendDynamicInfo</string>
     <string name="title_activity_friend_dyn_info_element">FriendDynInfoElement</string>
     <string name="title_activity_friend_brief_info">FriendBriefInfo</string>
+    <string name="title_activity_friend_dyn_info_view">FriendDynInfoView</string>
 
 </resources>

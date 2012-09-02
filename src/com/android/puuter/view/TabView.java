@@ -26,7 +26,7 @@ public class TabView extends TabActivity implements OnCheckedChangeListener{
         mHost.addTab(mHost.newTabSpec("ONE").setIndicator("ONE")
         			.setContent(new Intent(this,WaterFlowView.class)));
         mHost.addTab(mHost.newTabSpec("TWO").setIndicator("TWO")
-        		.setContent(new Intent(this,WaterFlowView.class)));
+        		.setContent(new Intent(this,FriendDynInfoView.class)));
 //        mHost.addTab(mHost.newTabSpec("THREE").setIndicator("THREE")
 //        		.setContent(new Intent(this,ThreeActivity.class)));
 //        mHost.addTab(mHost.newTabSpec("FOUR").setIndicator("FOUR")

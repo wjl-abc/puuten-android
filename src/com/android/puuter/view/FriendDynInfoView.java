@@ -6,7 +6,8 @@ import com.android.puuter.R;
 import com.android.puuter.controller.Controller;
 import com.android.puuter.controller.Controller.Result;
 import com.android.puuter.custom.FlowViewElement;
-import com.android.puuter.model.WaterFlow;
+import com.android.puuter.custom.FriendDynInfoElement;
+import com.android.puuter.model.FriendDynInfo;
 import com.android.puuter.model.WbDetail;
 import com.android.puuter.setting.Setting;
 
@@ -20,39 +21,36 @@ import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 
-public class WaterFlowView extends Activity {
+public class FriendDynInfoView extends Activity {
 
 	public static void actionView(Context context) {
-		Intent i = new Intent(context, WaterFlowView.class);
+		Intent i = new Intent(context, FriendDynInfoView.class);
 		context.startActivity(i);
 	}
 
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_water_flow_view);
-
-		mWaterFallView = (LinearLayout) findViewById(R.id.waterFallContainer);
-		mWaterFallScrollView = (ScrollView) findViewById(R.id.waterFallScrollView);
-
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.friend_dyn_info_view);
+        
+		mFriendWaterFallView = (LinearLayout) findViewById(R.id.friendWaterFallContainer);
+		mFriendWaterFallScrollView = (ScrollView) findViewById(R.id.friendWaterFallScrollView);
+		
 		mContext = this;
 		mController = Controller.getInstance(mContext);
 		mResultCallback = new ControllerResults();
 
-		mWaterFallScrollView.setOnTouchListener(new WaterFallOnTouchListener());
+//		mWaterFallScrollView.setOnTouchListener(new WaterFallOnTouchListener());
 		mTotalNum = 0;
-		mWaterFlowHandler = new WaterFlowHandler();
+		mFriendDynInfoHandler = new FriendDynInfoHandler();
 		mImageViewWidth = getWindowManager().getDefaultDisplay().getWidth() / mDisplayCols;
 		mColumnHeights = new int[mDisplayCols];
 
-		mWaterFallArray = new ArrayList<LinearLayout>();
+		mFriendWaterFallArray = new ArrayList<LinearLayout>();
 		for (int i = 0; i < mDisplayCols; i++) {
 			LinearLayout itemLayout = new LinearLayout(mContext);
 			LinearLayout.LayoutParams itemParam = new LinearLayout.LayoutParams(mImageViewWidth, LayoutParams.WRAP_CONTENT);
@@ -61,8 +59,8 @@ public class WaterFlowView extends Activity {
 			itemLayout.setOrientation(LinearLayout.VERTICAL);
 
 			itemLayout.setLayoutParams(itemParam);
-			mWaterFallArray.add(itemLayout);
-			mWaterFallView.addView(itemLayout);
+			mFriendWaterFallArray.add(itemLayout);
+			mFriendWaterFallView.addView(itemLayout);
 		}
 
 		// load resource
@@ -71,30 +69,30 @@ public class WaterFlowView extends Activity {
 				loadResource();
 			}
 		}.start();
-	}
+    }
 
 	private void loadResource() {
-		mController.loadResource(0, mResultCallback);
+		mController.loadFriendInfoRes(0, mResultCallback);
 	}
-
+	
 	private class ControllerResults implements Controller.Result {
 		public void loginServerCallBack(Context context, int progress) {
 		}
 
-		public void downloadResource(boolean status,  Object data) {
-			mWaterFlow = (WaterFlow)data;
-			mWaterFlowHandler.downloadResourceStatus(status);
+		public void downloadResource(boolean status, Object data) {
+			mFriendDynInfo = (FriendDynInfo)data;
+			mFriendDynInfoHandler.downloadResourceStatus(status);
 		}
 		
 		public void downloadResourceWbDetail(boolean status, WbDetail wbd){
 		}
 	}
-
-	private class WaterFlowHandler extends Handler {
+	
+	private class FriendDynInfoHandler extends Handler {
 		private final int IMAGE_DOWNLOAD = 1;
 		private final int RESOURCE_DOWNLOAD = 2;
 		private final int IMAGE_CLICKED = 3;
-
+		
 		public void handleMessage(android.os.Message msg) {
 			// 0 means fail
 			int status = 0;
@@ -118,44 +116,39 @@ public class WaterFlowView extends Activity {
 			case RESOURCE_DOWNLOAD:
 				status = msg.arg1;
 				if (status == 1) {
-					int len = mWaterFlow.getDataLen();
-					int sizeBeforeUpdater = mWaterFlow.getSizeBeforeUpdate();
+					int len = mFriendDynInfo.getDataLen();
+					int sizeBeforeUpdater = mFriendDynInfo.getSizeBeforeUpdate();
 					for (int i = sizeBeforeUpdater; i < len; i++) {
 						int columnIndex = GetMinValue(mColumnHeights);
-						FlowViewElement flowViewElement = new FlowViewElement(mContext);
-						flowViewElement.setAdjustViewBounds(true);
-						flowViewElement.setPadding(2, 2, 2, 2);
-						flowViewElement.setUrl(mWaterFlow.getPicUrl(i));
-						flowViewElement.setId(mWaterFlow.getWBId(i));
-						flowViewElement.setViewHandler(mWaterFlowHandler);
-
-						int height = (int) (mWaterFlow.getRatio(i) * mImageViewWidth);
-//						Log.d(TAG, "height: "+height + " ratio: " + mWaterFlow.getRatio(i) + " i:" + i);
-
-						LayoutParams lp = flowViewElement.getLayoutParams();
+						FriendDynInfoElement fdie = new FriendDynInfoElement(mContext);
+						fdie.mFve.setUrl(mFriendDynInfo.getPicUrl(i));
+						fdie.mFve.setId(mFriendDynInfo.getWBId(i));
+						fdie.mFbi.setFriendPic(mFriendDynInfo.getFriendAvatar(i));
+						fdie.mFbi.setTitle(mFriendDynInfo.getFriendName(i));
+						fdie.mFbi.setFriendId(mFriendDynInfo.getWBId(i));
+						fdie.mFbi.setFriendName(mFriendDynInfo.getFriendName(i));
+						fdie.mFbi.setFriendDynInfo(mFriendDynInfo.getDynInfo(i));
+						fdie.setViewHandler(mFriendDynInfoHandler);
+						
+						int height = (int) (mFriendDynInfo.getRatio(i) * mImageViewWidth+80);
+						LayoutParams lp = null;//FriendDynInfoElement.getLayoutParams();
 						if (lp == null) {
 							lp = new LayoutParams(mImageViewWidth, height);
 						}
-						flowViewElement.setLayoutParams(lp);
-						mWaterFallArray.get(columnIndex).addView(flowViewElement);
+						fdie.setLayoutParams(lp);
+						mFriendWaterFallArray.get(columnIndex).addView(fdie);
 						mColumnHeights[columnIndex] += height;
-						int row = mWaterFallArray.get(columnIndex).indexOfChild(flowViewElement);
+						int row = mFriendWaterFallArray.get(columnIndex).indexOfChild(fdie);
 						int col = columnIndex;
-						flowViewElement.setPosition(row, col);
+						fdie.mFve.setPosition(row, col);
 					}
 				} else {
 					// do nothing
 				}
 				break;
-			case IMAGE_CLICKED:
-				int wbId = msg.arg1;
-				DetailInfoView.actionView(mContext, wbId);
-				break;
-			default:
-				super.handleMessage(msg);
 			}
 		}
-
+		
 		public void downloadResourceStatus(boolean status) {
 			int what = RESOURCE_DOWNLOAD;
 			if (status == true) {
@@ -167,31 +160,7 @@ public class WaterFlowView extends Activity {
 			}
 		}
 	}
-
-	private class WaterFallOnTouchListener implements OnTouchListener {
-		public boolean onTouch(View v, MotionEvent event) {
-			switch (event.getAction()) {
-			case MotionEvent.ACTION_DOWN:
-				break;
-			case MotionEvent.ACTION_UP:
-				View view = mWaterFallScrollView.getChildAt(0);
-				if (view != null) {
-					if (view.getMeasuredHeight() - 20 <= mWaterFallScrollView.getScrollY() + mWaterFallScrollView.getHeight()) {
-						new Thread() {
-							public void run() {
-								loadResource();
-							}
-						}.start();
-					}
-				}
-				break;
-			default:
-				break;
-			}
-			return false;
-		}
-	}
-
+	
 	private int GetMinValue(int[] array) {
 		int m = 0;
 		int length = array.length;
@@ -202,10 +171,10 @@ public class WaterFlowView extends Activity {
 		}
 		return m;
 	}
+    
+	private ArrayList<LinearLayout> mFriendWaterFallArray;
 
-	private ArrayList<LinearLayout> mWaterFallArray;
-
-	private WaterFlowHandler mWaterFlowHandler;
+	private FriendDynInfoHandler mFriendDynInfoHandler;
 	private Controller mController;
 	private Result mResultCallback;
 	private Context mContext;
@@ -216,9 +185,9 @@ public class WaterFlowView extends Activity {
 	private int mImageViewWidth;
 	private int[] mColumnHeights;
 
-	private LinearLayout mWaterFallView;
-	private ScrollView mWaterFallScrollView;
-	private WaterFlow mWaterFlow;
+	private LinearLayout mFriendWaterFallView;
+	private ScrollView mFriendWaterFallScrollView;
+	private FriendDynInfo mFriendDynInfo;
 
-	private String TAG = "WaterFlowView";
+	private String TAG = "FriendDynInfoView";
 }

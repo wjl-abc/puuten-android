@@ -2,12 +2,14 @@ package com.android.puuter.controller;
 
 import java.util.HashMap;
 
+import com.android.puuter.model.FriendDynInfo;
 import com.android.puuter.model.WaterFlow;
 import com.android.puuter.model.WbDetail;
 import com.android.puuter.setting.Setting;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 
 public class Controller {
 	protected Controller(Context context){
@@ -62,10 +64,21 @@ public class Controller {
 		resultCallback.downloadResourceWbDetail(ret==0? true:false, wbd);
 	}
 	
+	public void loadFriendInfoRes(int id, final Result resultCallback){
+		Log.d(TAG, "in loadFriendInfoRes");
+		String url = Setting.rootUrl + "/" + Setting.friendDynInfo;
+		HashMap<String, String> parms = new HashMap<String, String>();
+		parms.put("mobile", "android");
+		String jsonStr = mHttpController.retrieveRemoteData(url, parms);
+		FriendDynInfo fdi = new FriendDynInfo();
+		int ret = fdi.parseJson(jsonStr);
+		resultCallback.downloadResource(ret==0? true:false, fdi);
+	}
+	
 	public interface Result{
 		//only for login
 		public void loginServerCallBack(Context context, int progress);
-		public void downloadResource(boolean status, WaterFlow waterFlow);
+		public void downloadResource(boolean status, Object data);
 		public void downloadResourceWbDetail(boolean status, WbDetail wbd);
 	}
 	

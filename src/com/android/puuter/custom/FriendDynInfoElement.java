@@ -3,6 +3,7 @@ package com.android.puuter.custom;
 import com.android.puuter.R;
 
 import android.content.Context;
+import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.LinearLayout;
@@ -25,6 +26,16 @@ public class FriendDynInfoElement extends LinearLayout {
 		mFbi = (FriendBriefInfoElement) findViewById(R.id.fbie);
 	}
 	
+	public Handler getViewHandler() {
+		return mViewHandler;
+	}
+
+	public void setViewHandler(Handler viewHandler) {
+		mViewHandler = viewHandler;
+		mFve.setViewHandler(mViewHandler);
+		mFbi.setViewHandler(mViewHandler);
+	}
+	
 	public void setInfoGone(){
 		mFbi.setInfoGone();
 	}
@@ -33,8 +44,13 @@ public class FriendDynInfoElement extends LinearLayout {
 		mFbi.setInfoVisible();
 	}
 	
+	public void setWbId(int id){
+		mId = id;
+	}
+	
 	private String TAG = "FriendDynInfoElement";
-	private FlowViewElement mFve;
-	private FriendBriefInfoElement mFbi;
+	Handler mViewHandler;
+	public FlowViewElement mFve;
+	public FriendBriefInfoElement mFbi;
 	private int mId;
 }

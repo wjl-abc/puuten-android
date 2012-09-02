@@ -58,7 +58,7 @@ public class DetailInfoView extends Activity {
 		public void loginServerCallBack(Context context, int progress) {
 		}
 
-		public void downloadResource(boolean status, WaterFlow waterFlow) {
+		public void downloadResource(boolean status, Object data) {
 		}
 		
 		public void downloadResourceWbDetail(boolean status, WbDetail wbd){
