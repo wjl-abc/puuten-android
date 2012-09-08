@@ -27,5 +27,6 @@
     <string name="title_activity_friend_brief_info">FriendBriefInfo</string>
     <string name="title_activity_friend_dyn_info_view">FriendDynInfoView</string>
     <string name="title_activity_justtest">justtest</string>
+    <string name="title_activity_wbdetail_info">WBDetailInfo</string>
 
 </resources>

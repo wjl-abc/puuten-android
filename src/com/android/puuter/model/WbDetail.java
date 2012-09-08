@@ -29,6 +29,26 @@ public class WbDetail {
 		return mAvatarUrl;
 	}
 	
+	public float getRatio(){
+		return mRatio;
+	}
+	
+	public String getReWbBody(){
+		return mReWbBody;
+	}
+	
+	public String getReWbName(){
+		return mReWbName;
+	}
+	
+	public int getType(){
+		return mType;
+	}
+	
+	public String getBsUrl(){
+		return mBsUrl;
+	}
+	
 	public int parseJsonToWbDetail(String jsonStr){
 		if(jsonStr == null){
 			return -1;
@@ -40,10 +60,11 @@ public class WbDetail {
 			mBody = jsonArray.getString("body");
 			mAvatarUrl = jsonArray.getString("avatar_url");
 			mBsId = jsonArray.getInt("bs_id");
-			Log.d(TAG, "BS id: " + mBsId);
-			Log.d(TAG, "name: " + mName);
-			Log.d(TAG, "body: " + mBody);
-			Log.d(TAG, "avatarUrl: " + mAvatarUrl);
+			mRatio = (float)jsonArray.getDouble("ratio");
+			mReWbBody = jsonArray.getString("re_wb_body");
+			mReWbName = jsonArray.getString("re_wb_name");
+			mType = jsonArray.getInt("type");
+			mBsUrl = jsonArray.getString("pic_url");
 		}catch(Exception e){
 			Log.v(TAG, "json parse fail, json data:" + jsonStr);
 			return -1;
@@ -56,5 +77,10 @@ public class WbDetail {
 	private String mName;
 	private String mBody;
 	private String mAvatarUrl;
+	private float mRatio;
+	private String mReWbBody;
+	private String mReWbName;
+	private int mType;
+	private String mBsUrl;
 	private static String TAG = "WbDetail";
 }

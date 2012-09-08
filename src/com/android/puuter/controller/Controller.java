@@ -56,6 +56,7 @@ public class Controller {
 	
 	public void loadResourceWbDetail(int wbId, final Result resultCallback){
 		String url = Setting.rootUrl + "/" + Setting.idDetail + "/" + wbId + "/";
+		Log.v(TAG, "wbid:"+wbId);
 		HashMap<String, String> parms = new HashMap<String, String>();
 		parms.put("mobile", "android");
 		String jsonStr = mHttpController.retrieveRemoteData(url, parms);

@@ -58,6 +58,10 @@
             android:name=".justtest"
             android:label="@string/title_activity_justtest" >
         </activity>
+        <activity
+            android:name=".view.WBDetailInfo"
+            android:label="@string/title_activity_wbdetail_info" >
+        </activity>
     </application>
 
 </manifest>

@@ -149,7 +149,8 @@ public class WaterFlowView extends Activity {
 				break;
 			case IMAGE_CLICKED:
 				int wbId = msg.arg1;
-				DetailInfoView.actionView(mContext, wbId);
+//				DetailInfoView.actionView(mContext, wbId);
+				WBDetailInfo.actionView(mContext, wbId);
 				break;
 			default:
 				super.handleMessage(msg);
