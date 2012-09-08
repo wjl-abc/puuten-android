@@ -37,43 +37,76 @@ public final class R {
         public static final int icon_5=0x7f020009;
         public static final int imageviewbackground=0x7f02000a;
         public static final int maintab_toolbar_bg=0x7f02000b;
+        public static final int star1=0x7f02000c;
+        public static final int star2=0x7f02000d;
+        public static final int star3=0x7f02000e;
+        public static final int star4=0x7f02000f;
     }
     public static final class id {
-        public static final int TextView01=0x7f09000b;
+        public static final int BusinessPic=0x7f090016;
+        public static final int PosterName=0x7f09001a;
+        public static final int StarIcon=0x7f090019;
+        public static final int TextView01=0x7f09000e;
+        public static final int WbPosterIcon=0x7f090017;
+        public static final int backButton=0x7f090014;
         public static final int bs_body=0x7f090003;
         public static final int bs_icon=0x7f090000;
         public static final int bs_name=0x7f090002;
-        public static final int cancelButton=0x7f090010;
-        public static final int loginprogressbar=0x7f09000e;
-        public static final int main_radio=0x7f090004;
-        public static final int menu_settings=0x7f090012;
-        public static final int okButton=0x7f09000f;
-        public static final int password=0x7f09000c;
-        public static final int radio_button0=0x7f090005;
-        public static final int radio_button1=0x7f090006;
+        public static final int cancelButton=0x7f090013;
+        public static final int fbie=0x7f090020;
+        public static final int flows2=0x7f090005;
+        public static final int flows3=0x7f090004;
+        public static final int friendDynInfo=0x7f09001e;
+        public static final int friendName=0x7f09001d;
+        public static final int friendPic=0x7f09001c;
+        public static final int friendWaterFall=0x7f090021;
+        public static final int friendWaterFallContainer=0x7f090023;
+        public static final int friendWaterFallScrollView=0x7f090022;
+        public static final int horizontalLine=0x7f090015;
+        public static final int loginprogressbar=0x7f090011;
+        public static final int main_radio=0x7f090006;
+        public static final int menu_settings=0x7f090024;
+        public static final int newestPic=0x7f09001f;
+        public static final int okButton=0x7f090012;
+        public static final int password=0x7f09000f;
+        public static final int radio_button0=0x7f090007;
+        public static final int radio_button1=0x7f090008;
+        public static final int radio_button2=0x7f090009;
+        public static final int textInfo=0x7f090018;
         public static final int textView1=0x7f090001;
-        public static final int textView2=0x7f09000d;
-        public static final int username=0x7f09000a;
-        public static final int waterFall=0x7f090007;
-        public static final int waterFallContainer=0x7f090009;
-        public static final int waterFallScrollView=0x7f090008;
-        public static final int waterfall_image=0x7f090011;
+        public static final int textView2=0x7f090010;
+        public static final int title=0x7f09001b;
+        public static final int username=0x7f09000d;
+        public static final int waterFall=0x7f09000a;
+        public static final int waterFallContainer=0x7f09000c;
+        public static final int waterFallScrollView=0x7f09000b;
     }
     public static final class layout {
         public static final int activity_detail_info_view=0x7f030000;
-        public static final int activity_tab_view=0x7f030001;
-        public static final int activity_water_flow_view=0x7f030002;
-        public static final int activity_welcome=0x7f030003;
-        public static final int flowviewelement=0x7f030004;
+        public static final int activity_justtest=0x7f030001;
+        public static final int activity_tab_view=0x7f030002;
+        public static final int activity_water_flow_view=0x7f030003;
+        public static final int activity_welcome=0x7f030004;
+        public static final int detail_info=0x7f030005;
+        public static final int friend_brief_info=0x7f030006;
+        public static final int friend_dyn_info_element=0x7f030007;
+        public static final int friend_dyn_info_view=0x7f030008;
     }
     public static final class menu {
         public static final int activity_detail_info=0x7f080000;
         public static final int activity_detail_info_view=0x7f080001;
         public static final int activity_flowviewelement=0x7f080002;
-        public static final int activity_tab=0x7f080003;
-        public static final int activity_tab_view=0x7f080004;
-        public static final int activity_water_flow_view=0x7f080005;
-        public static final int activity_welcome=0x7f080006;
+        public static final int activity_friend_dynamic_info_view_element=0x7f080003;
+        public static final int activity_justtest=0x7f080004;
+        public static final int activity_tab=0x7f080005;
+        public static final int activity_tab_view=0x7f080006;
+        public static final int activity_water_flow_view=0x7f080007;
+        public static final int activity_welcome=0x7f080008;
+        public static final int detail_info=0x7f080009;
+        public static final int friend_brief_info=0x7f08000a;
+        public static final int friend_dyn_info=0x7f08000b;
+        public static final int friend_dyn_info_element=0x7f08000c;
+        public static final int friend_dyn_info_view=0x7f08000d;
     }
     public static final class string {
         public static final int alarm=0x7f05000e;
@@ -89,9 +122,15 @@ public final class R {
         public static final int title_activity_com_android_puuter_flowviewelement=0x7f050008;
         public static final int title_activity_detail_info=0x7f050009;
         public static final int title_activity_detail_info_view=0x7f050011;
+        public static final int title_activity_friend_brief_info=0x7f050014;
+        public static final int title_activity_friend_dyn_info_element=0x7f050013;
+        public static final int title_activity_friend_dyn_info_view=0x7f050015;
+        public static final int title_activity_friend_dynamic_info_view_element=0x7f050012;
+        public static final int title_activity_justtest=0x7f050016;
         public static final int title_activity_tab=0x7f050007;
         public static final int title_activity_tab_view=0x7f05000b;
         public static final int title_activity_water_flow_view=0x7f05000a;
+        public static final int title_activity_wbdetail_info=0x7f050017;
         public static final int title_activity_welcome=0x7f050004;
         public static final int username=0x7f050001;
     }
