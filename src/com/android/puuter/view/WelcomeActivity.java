@@ -13,7 +13,6 @@ import android.widget.Toast;
 
 import com.android.puuter.R;
 import com.android.puuter.controller.Controller;
-import com.android.puuter.model.WaterFlow;
 import com.android.puuter.model.WbDetail;
 
 public class WelcomeActivity extends Activity {
@@ -25,12 +24,6 @@ public class WelcomeActivity extends Activity {
         
         initView();
     }
-
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.activity_welcome, menu);
-//        return true;
-//    }
     
     private void initView(){
         mUsername = (EditText) findViewById(R.id.username);
